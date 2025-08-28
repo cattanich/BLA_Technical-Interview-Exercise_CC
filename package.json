@@ -1,0 +1,23 @@
+{
+  "name": "pokemon-app",
+  "version": "1.0.0",
+  "description": "Pokemon Application with React Frontend and Express Backend",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "test": "cd frontend && npm test && cd ../backend && npm test"
+  },
+  "keywords": [
+    "pokemon",
+    "react",
+    "express",
+    "fullstack"
+  ],
+  "author": "Christian Cattani",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
