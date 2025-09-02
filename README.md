@@ -18,7 +18,7 @@ Create a React (TypeScript + Vite) app with the following features:
 - Main page with a search bar and paginated list of Pokémon from https://pokeapi.co/.
 - Each Pokémon card shows image + name.
 - Clicking a Pokémon opens a modal with abilities, moves, and forms.
-- Use Zustand for state management.
+- Use Context API for state management.
 - Use TailwindCSS for styling.
 - Implement routing with React Router.
 
@@ -38,7 +38,7 @@ Generate a React component <TaskTable> that supports CRUD operations for tasks.
 - Each task has: id, title, description, status, due_date, userId.
 - Display tasks in a table with edit/delete buttons.
 - Add a form to create new tasks.
-- Use Zustand for state management.
+- Use Context API for state management.
 - Use TailwindCSS for styling.
 - Include basic form validation.
 
