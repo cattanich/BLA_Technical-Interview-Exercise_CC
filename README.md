@@ -7,52 +7,6 @@ Developed by Christian Cattani
 
 "As a Pokemon enthusiast, I want to browse and search for Pokemon easily, so that I can quickly find detailed information about my favorite Pokemon. I need a secure application where I can log in and access a comprehensive collection of Pokemon with their abilities, moves, and forms."
 
-
-##  Prompts Used (Claude Code)
-
-Frontend Prompt
-
-Create a React (TypeScript + Vite) app with the following features:
-- Login screen with username/password validation (admin/admin).
-- Store session in localStorage.
-- Main page with a search bar and paginated list of Pokémon from https://pokeapi.co/.
-- Each Pokémon card shows image + name.
-- Clicking a Pokémon opens a modal with abilities, moves, and forms.
-- Use Context API for state management.
-- Use TailwindCSS for styling.
-- Implement routing with React Router.
-
-Backend Prompt
-
-Using Node.js + Express, create a lightweight backend that replicates basic PokeAPI behavior.
-- Endpoint: GET /pokemon?page=X&limit=Y → returns paginated Pokémon list.
-- Endpoint: GET /pokemon/:id → returns details (name, abilities, moves, forms).
-- Use in-memory data or SQLite.
-- Add a simple login endpoint: POST /login {username, password}, validate 'admin'/'admin', return a session token.
-- Protect Pokémon endpoints so they require a valid token.
-- Add Jest + Supertest tests.
-
-Table Component Prompt (GenAI exercise)
-
-Generate a React component <TaskTable> that supports CRUD operations for tasks.
-- Each task has: id, title, description, status, due_date, userId.
-- Display tasks in a table with edit/delete buttons.
-- Add a form to create new tasks.
-- Use Context API for state management.
-- Use TailwindCSS for styling.
-- Include basic form validation.
-
-Testing Prompt
-
-Write Jest + React Testing Library tests for a React login form component with username and password fields.
-- Validate empty input shows error.
-- Validate wrong credentials show error message.
-- Validate correct login calls onLogin function.
-
-## Overview
-
-This application allows users to browse, search, and view detailed information about Pokémon in a clean, intuitive interface. It features secure login, responsive design, and comprehensive Pokémon data.
-
 ## Features
 
 - **Secure Authentication**
@@ -71,37 +25,64 @@ This application allows users to browse, search, and view detailed information a
   - Pokémon abilities, moves, and forms
   - Visual styling based on Pokémon types
 
-## Architecture
-
-### Frontend
-- React with Vite
-- React Router for navigation
-- Styled Components for UI
-- Context API for state management
-
-### Backend
-- Express.js REST API
-- In-memory data storage
-- Service-based architecture
-
 ## Project Structure
 
 ```
-├── frontend/
-│   ├── src/
-│   │   ├── components/ # Reusable UI elements
-│   │   ├── contexts/   # Application state
-│   │   ├── hooks/      # Custom React hooks
-│   │   ├── pages/      # Main views
-│   │   ├── services/   # API communication
-│   │   └── styles/     # Global styling
+├── frontend/ (React + Vite)
+│   ├── components/ - Reusable UI elements
+│   ├── contexts/ - Global state management
+│   ├── hooks/ - Custom React hooks
+│   ├── pages/ - Main views
+│   └── services/ - API communication
 │
-└── backend/
-    └── src/
-        ├── controllers/ # Request handlers
-        ├── data/        # Pokémon dataset
-        ├── routes/      # API endpoints
-        └── services/    # Business logic
+└── backend/ (Express)
+    ├── controllers/ - Request handlers
+    ├── data/ - Pokémon dataset
+    ├── routes/ - API endpoints
+    └── services/ - Business logic
+```
+
+## Claude Code Prompts
+
+### Project Initialization
+
+```
+Create a Pokémon application with React and Express that fulfills this user story:
+"As a Pokemon enthusiast, I want to browse and search for Pokemon easily, so that I can quickly find detailed information about my favorite Pokemon. I need a secure application where I can log in and access a comprehensive collection of Pokemon with their abilities, moves, and forms."
+
+Set up the folder structure and files for the frontend (React + Vite) and backend (Express) following clean architecture.
+```
+
+### Authentication System
+
+```
+Implement a simple authentication system for the Pokémon application with:
+- Local validation using "admin"/"admin" credentials
+- Persistence with localStorage
+- React context for authentication state management
+- Automatic redirection based on authentication status
+```
+
+### Pokémon Frontend
+
+```
+Create React components to display a list of Pokémon with:
+- Visual cards showing image and name
+- Color-coded badges for Pokémon types
+- Modal to show details on click (abilities, moves, forms)
+- Pagination for navigating results
+- Functional search bar
+```
+
+### Pokémon Backend
+
+```
+Develop an Express backend that:
+- Replicates basic PokeAPI functionality
+- Implements RESTful endpoints for listing Pokémon with pagination
+- Allows search by name
+- Delivers complete details of a Pokémon by ID
+- Uses in-memory storage for data
 ```
 
 ## Setup
@@ -111,38 +92,32 @@ This application allows users to browse, search, and view detailed information a
    npm run install-all
    ```
 
-2. Start development servers:
+2. Start servers:
    ```bash
    npm run dev
    ```
 
-3. Access the application:
+3. Access:
    - Frontend: http://localhost:4000
    - Backend: http://localhost:3001
 
-## Login Credentials
+4. Credentials:
+   - Username: admin
+   - Password: admin
 
-- Username: admin
-- Password: admin
+## Resources
 
-## API Endpoints
-
-- `GET /api/pokemon` - List Pokémon with pagination and search
-- `GET /api/pokemon/id/:id` - Get Pokémon by ID
-- `GET /api/pokemon/name/:name` - Get Pokémon by name
-
-## Image Resources
-
-The Pokémon images used in this application are sourced from the official Pokémon sprites repository maintained by the PokeAPI project. These sprite images are referenced directly from:
-
+Pokémon images are sourced from the official PokeAPI sprites repository:
 ```
 https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png
 ```
 
-Where `{id}` is the Pokémon's National Pokédex number. These images are used for educational and demonstrative purposes in this application.
+## Technologies
 
-
+- **Frontend**: React, Vite, React Router, Styled Components
+- **Backend**: Express, Node.js
+- **Development**: ESLint, Vitest
 
 ---
 
-This project demonstrates modern web development practices including component-based architecture, RESTful API design, and responsive UI implementation.
+This project implements clean architecture with separation of concerns, reusable components, and an efficient REST API.
